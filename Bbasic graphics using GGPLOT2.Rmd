@@ -1,0 +1,32 @@
+---
+title: "Basic graphics using GGPLOT2"
+author: "Gabriel Miranda"
+date: "09/03/2020"
+output: html_document
+---
+```{r}
+
+require(readr)
+require(ggplot2)
+require(dplyr)
+
+```
+
+```{r}
+# Everything I create, in my profile, in R I'll try to create as equal as possible in Python.
+
+# Data from: https://www.kaggle.com/abcsds/pokemon
+```
+
+```{r}
+# Pre-processing
+df = read_csv("Pokemon.csv")
+df$Legendary = ifelse(df$Legendary == FALSE, 'Not Legendary', 'Legendary')
+```
+```{r}
+# One Scatterplot Chart
+ggplot(data = df, aes(x = HP, y = Attack, color = as.factor(Legendary))) + xlim(c(0, 300)) + ylim(c(0, 200)) +
+  geom_point() + labs(title='Scatterplot Chart Example')
+
+```
+
